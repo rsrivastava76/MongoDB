@@ -27,15 +27,33 @@ public class MongoDBJDBC {
 			String user = "mongouser"; // the user name
 			String password = "pass@123"; // the password as a character array
 			String database = "extended_doc"; // the name of the database in which the user is defined
-			String server1 = "test.mongodb.firstrain.com";
-			int port = 27017;
-
+			
+			String server1 = "mukesh2-lin.usa.firstrain.com";
+			int port1 = 27018;
+			
+			String server2 = "mukesh2-lin.usa.firstrain.com";
+			int port2 = 27019;
+			
+			String server3 = "mukesh2-lin.usa.firstrain.com";
+			int port3 = 27020;
+			
+		/*  server: test.mongodb.firstrain.com
+			port: 27018
+			user: mongouser
+			password: pass@123
+			db: extended_doc */
+			
+			
 			List<ServerAddress> seeds = new ArrayList<ServerAddress>();
-			seeds.add( new ServerAddress( server1,port ));
+			seeds.add( new ServerAddress( server1,port1 ));
+			seeds.add( new ServerAddress( server2,port2 ));
+			seeds.add( new ServerAddress( server3,port3 ));
+			
 
 			List<MongoCredential> credentials = new ArrayList<MongoCredential>();
 			credentials.add( MongoCredential.createScramSha1Credential( user, database, password.toCharArray() ) );
-
+			
+			
 			MongoClient mongoClient = new MongoClient( seeds, credentials );
 			MongoDatabase db = mongoClient.getDatabase(database);
 
